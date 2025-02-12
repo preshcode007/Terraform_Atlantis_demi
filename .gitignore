@@ -2,3 +2,5 @@ venv
 .vscode
 **/.terraform
 **/terraform.tfstate*
+.envrc
+values.yaml
