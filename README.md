@@ -22,3 +22,7 @@ helm install atlantis runatlantis/atlantis -f values.yaml
 
 4. Setup a webhook on Github (or your preferred Git server)
     Ensure you set a webhook secret
+
+## References
+
+- [Atlantis Helm Install](https://www.runatlantis.io/docs/deployment.html#kubernetes-helm-chart)
