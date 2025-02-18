@@ -46,6 +46,14 @@ helm install atlantis runatlantis/atlantis -f values.yaml
 3. Setup a webhook on Github (or your preferred Git server)
    Ensure you set a webhook secret
 
+4. Ensure you create a kubernetes secret to handle github token and webhook secret
+
+```shell
+echo -n "yourtoken" > token
+echo -n "yoursecret" > webhook-secret
+kubectl create secret generic atlantis-vcs --from-file=token --from-file=webhook-secret
+```
+
 ## References
 
 - [Atlantis Helm Install](https://www.runatlantis.io/docs/deployment.html#kubernetes-helm-chart)
