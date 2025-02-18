@@ -3,4 +3,5 @@ venv
 **/.terraform
 **/terraform.tfstate*
 .envrc
+volume
 values.yaml
