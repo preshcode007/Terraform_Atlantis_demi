@@ -5,3 +5,4 @@ venv
 .envrc
 volume
 values.yaml
+*.pem

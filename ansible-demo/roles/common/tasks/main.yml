@@ -1,0 +1,47 @@
+---
+# tasks file for roles/common
+- name: Update APT Cache
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: dist
+
+- name: Ensure common utilities are installed
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - curl
+    - vim
+    - wget
+    - unzip
+    - git
+    - tmux
+    - python3
+    - python3-pip
+    - software-properties-common
+    - apt-transport-https
+    - ca-certificates
+    - gnupg
+
+- name: Add Docker GPG Key
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repository
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+    state: present
+
+- name: Update apt and install Docker
+  ansible.builtin.apt:
+    name: docker-ce
+    state: present
+    update_cache: true
+  become: true
+
+- name: Install Docker Module for Python
+  ansible.builtin.pip:
+    name: docker
+    state: present
+    executable: pip3
