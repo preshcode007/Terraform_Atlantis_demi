@@ -1,0 +1,23 @@
+- name: Setup Three-Tier Application
+  hosts: all
+  become: true
+  roles:
+    - common
+    - { role: web, when: "'web' in group_names" }
+    - { role: application, when: "'application' in group_names" }
+    - { role: database, when: "'database' in group_names" }
+
+- name: Gather Facts and Print Installed Software
+  hosts: all
+  tasks:
+    - name: Print OS Information
+      ansible.builtin.debug:
+        msg: "OS Information: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+    - name: Print Installed Docker Version
+      ansible.builtin.shell: docker --version
+      register: docker_version
+      ignore_errors: true
+      changed_when: false
+    - name: Print Docker Version
+      ansible.builtin.debug:
+        msg: "Docker Version: {{ docker_version.stdout }}"
