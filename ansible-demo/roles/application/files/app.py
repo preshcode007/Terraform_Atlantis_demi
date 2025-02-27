@@ -5,8 +5,15 @@ This is a sample application to demonstrate ansible deployment
 from flask import Flask
 app = Flask(__name__)
 
+
 @app.route('/')
 def hello_world():
+    """Sample API
+    This is a sample API to demonstrate ansible deployment
+
+    Returns:
+        string: Plain old hello world message
+    """
     return 'Hello, World!'
 
 

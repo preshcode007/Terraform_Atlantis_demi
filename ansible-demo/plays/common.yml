@@ -1,11 +1,8 @@
-- name: Setup Three-Tier Application
+- name: Install Common Packages
   hosts: all
   become: true
   roles:
-    - common
-    - { role: web, when: "'web' in group_names" }
-    - { role: application, when: "'application' in group_names" }
-    - { role: database, when: "'database' in group_names" }
+    - ../roles/common
 
 - name: Gather Facts and Print Installed Software
   hosts: all

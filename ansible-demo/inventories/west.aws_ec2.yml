@@ -1,9 +1,9 @@
 plugin: amazon.aws.aws_ec2
 regions:
-  - us-east-1
+  - us-west-1
 filters:
   instance-state-name: running
-  tag:Environment: "core-banking"
+  tag:Name: "david-0"
 keyed_groups:
   - key: tags.Role
     prefix: "aws"
