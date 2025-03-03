@@ -1,0 +1,14 @@
+# Ignore Terraform state files and backend configs
+*.tfstate
+*.tfstate.*
+.terraform/
+terraform.tfvars
+terraform.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Ignore SSH keys and credentials
+*.pem
+*.key
+*.crt
+aws-credentials
